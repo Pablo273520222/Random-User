@@ -1,0 +1,42 @@
+h1 {
+  color: #f6f1ee;
+  text-align: center;
+  background-color: #8eaccd;
+}
+
+body {
+  color: #f6f1ee;
+  background-color: #d2e0fb;
+}
+
+.container {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.card {
+  background-color: #ed7c31;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  background-color: #8eaccd;
+  color: #f6f1ee;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+}
+
+button:hover {
+  background-color: #ed7c31;
+}
