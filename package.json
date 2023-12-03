@@ -2,6 +2,7 @@
   "name": "t3-p12-pablo",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://pablo273520222.github.io/Random-User",
   "type": "module",
   "scripts": {
     "dev": "vite",
