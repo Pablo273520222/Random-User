@@ -7,30 +7,32 @@ cardDiv.classList.add('card');
 outputElement.appendChild(cardDiv);
 
 const img = document.createElement('img');
-const nameSpan = document.createElement('span');
-const emailSpan = document.createElement('span');
-const phoneSpan = document.createElement('span');
-const locationSpan = document.createElement('span');
-const timeSpan = document.createElement('span');
+
 const button = document.createElement('button');
 button.textContent = 'GENERATE USER';
 button.addEventListener('click', generateRandomUser);
 
 img.src = "recurso/user_nt_found.jpg";
-nameSpan.textContent = "Name: name surname";
-emailSpan.textContent = "Mail: mail";
-phoneSpan.textContent = "Phone: phone";
-locationSpan.textContent = "Location: city ";
-timeSpan.textContent = "Current Time: time";
 
+const spanNames = ['Name', 'Mail', 'Phone', 'Location', 'Current Time'];
+const spans = {};
 
+for (const spanName of spanNames) {
+    spans[spanName.toLowerCase()] = document.createElement('span');
+}
+
+spans['name'].textContent = "Name: name surname";
+spans['mail'].textContent = "Mail: mail";
+spans['phone'].textContent = "Phone: phone";
+spans['location'].textContent = "Location: city";
+spans['current time'].textContent = "Current Time: time";
 
 cardDiv.appendChild(img);
-cardDiv.appendChild(nameSpan);
-cardDiv.appendChild(emailSpan);
-cardDiv.appendChild(phoneSpan);
-cardDiv.appendChild(locationSpan);
-cardDiv.appendChild(timeSpan);
+
+for (const spanName of spanNames) {
+    cardDiv.appendChild(spans[spanName.toLowerCase()]);
+}
+
 outputElement.appendChild(button);
 
 async function generateRandomUser() {
@@ -39,14 +41,13 @@ async function generateRandomUser() {
         const personObject = await mapToPersonObjects(personData);
 
         const currentTimeData = await fetchCurrentTime(personObject.location.city);
-        console.log(personObject);
 
         img.src = `${personObject.picture.large}`;
-        nameSpan.textContent = `Name: ${personObject.name.first} ${personObject.name.last}`;
-        emailSpan.textContent = `Mail: ${personObject.email}`;
-        phoneSpan.textContent = `Phone: ${personObject.phone}`;
-        locationSpan.textContent = `Location: ${personObject.location.city}`;
-        timeSpan.textContent = `Current Time:  ${currentTimeData.hour}:${currentTimeData.minute}:${currentTimeData.second} `;
+        spans['name'].textContent = `Name: ${personObject.name.first} ${personObject.name.last}`;
+        spans['mail'].textContent = `Mail: ${personObject.email}`;
+        spans['phone'].textContent = `Phone: ${personObject.phone}`;
+        spans['location'].textContent = `Location: ${personObject.location.city}`;
+        spans['current time'].textContent = `Current Time:  ${currentTimeData.hour}:${currentTimeData.minute}:${currentTimeData.second}`;
 
         console.log(personObject.name);
     } catch (error) {
