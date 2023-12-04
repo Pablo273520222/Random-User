@@ -1,4 +1,4 @@
-import { Person } from './Persona.js';
+import { Person } from './Person.js';
 
 export const mapToPersonObjects = ({ picture, name, email, phone, location, currentime }) => {
     return new Promise((resolve, reject) => {

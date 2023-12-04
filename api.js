@@ -1,4 +1,4 @@
-export const fetchPerson = async function fetchRandomUser() {
+export const fetchPerson = async () => {
     try {
         const response = await fetch('https://randomuser.me/api');
         const data = await response.json();
@@ -8,7 +8,7 @@ export const fetchPerson = async function fetchRandomUser() {
     }
 };
 
-export const fetchCurrentTime = async function fetchCurrentTime(location) {
+export const fetchCurrentTime = async (location) => {
     const url = `https://world-time-by-api-ninjas.p.rapidapi.com/v1/worldtime?city=${location}`;
     const options = {
         method: 'GET',
